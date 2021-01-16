@@ -1,16 +1,18 @@
-import React, { FC } from "react";
+import "./style.css";
+import { ReactComponent as Icon } from "./images/close.svg";
+
+import React from "react";
 import cx from "classnames";
 
-import { ReactComponent as Icon } from "./images/close.svg";
-import "./style.css";
-
-interface Props {
+interface CloseProps {
+  onClick: () => void;
   className?: string;
-  onClick?: () => void;
 }
 
-export const Close: FC<Props> = ({ className, onClick }) => (
-  <div className={cx("close", className)} onClick={onClick}>
+const Close: React.FunctionComponent<CloseProps> = (props) => (
+  <div className={cx("close", props.className)} onClick={props.onClick}>
     <Icon className="close--icon" />
   </div>
 );
+
+export {Close};
