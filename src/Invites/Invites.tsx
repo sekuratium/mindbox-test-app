@@ -1,25 +1,25 @@
-import React, { FC, useState, useCallback, useEffect } from "react";
-
 import "./style.css";
 
-interface Props {
+import React from "react";
+
+interface InvitesProps {
   invites: string[];
-  onAdd: (name: string) => void;
+  onAddInvite: (name: string) => void;
 }
 
-export const Invites: FC<Props> = ({ invites, onAdd }) => {
-  const [name, setName] = useState("");
-  const handleChangeName = useCallback(
-    (event: any) => {
+const Invites: React.FunctionComponent<InvitesProps> = ({ invites, onAddInvite }) => {
+  const [name, setName] = React.useState("");
+  const onChangeName = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
       setName(event.target.value);
     },
     [setName]
   );
-  const handleSubmit = useCallback(() => {
-    onAdd(name);
-  }, [name, onAdd]);
+  const submit = React.useCallback(() => {
+      onAddInvite(name);
+  }, [name, onAddInvite]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setName("");
   }, [invites]);
 
@@ -28,11 +28,16 @@ export const Invites: FC<Props> = ({ invites, onAdd }) => {
       <div className="invites--form">
         <input
           className="invites--form-input"
-          onChange={handleChangeName}
+          onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                  submit();
+              }
+          }}
+          onChange={onChangeName}
           type="text"
           value={name}
         />
-        <button className="invites--form-submit" onClick={handleSubmit}>
+        <button className="invites--form-submit" onClick={submit}>
           Invite
         </button>
       </div>
@@ -45,3 +50,5 @@ export const Invites: FC<Props> = ({ invites, onAdd }) => {
     </div>
   );
 };
+
+export {Invites};

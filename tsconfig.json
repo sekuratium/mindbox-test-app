@@ -1,23 +1,33 @@
 {
-    "exclude": [
-        "node_modules"
+  "compilerOptions": {
+    "strict": true,
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016",
+      "es2017"
     ],
-    "compilerOptions": {
-        "strict": true,
-        "lib": [
-            "dom",
-            "es2015",
-            "es2016",
-            "es2017"
-        ],
-        "jsx": "react",
-        "esModuleInterop": true,
-        "baseUrl": "./",
-        "rootDir": "./",
-        "moduleResolution": "node",
-        "typeRoots": [
-            "./node_modules/@types",
-            "./types"
-        ]
-    }
+    "allowJs": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "rootDir": "./",
+    "moduleResolution": "node",
+    "target": "es5",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ]
+  },
+  "include": [
+    "*",
+    "**/*"
+  ]
 }
